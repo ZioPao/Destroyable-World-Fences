@@ -23,7 +23,7 @@ function DWF_WallSystem:isValidIsoObject(isoObject)
 end
 
 function DWF_WallSystem:OnClientCommand(command, playerObj, args)
-	print("DWF: TO BE IMPLEMENTED")
+	--print("DWF: TO BE IMPLEMENTED")
 	--STrapSystemCommands[command](playerObj, args)
 end
 

@@ -166,7 +166,7 @@ end
 local function removeExistingLuaObject(square)
 	local luaObject = DWF_WallSystem.instance:getLuaObjectOnSquare(square)
 	if luaObject then
-		print("Lua Object found")
+		--print("Lua Object found")
         --noise('removing luaObject at same location as newly-loaded isoObject')
 		DWF_WallSystem.instance:removeLuaObject(luaObject)
 	end
@@ -190,29 +190,71 @@ local function GetWallDefFromSprite(spriteName)
 	return nil,false
 end
 
--- We need a stupidly high number
-local function GetMaxHealth(sprite_name)
+
+---@param sprite_name string
+---@param java_object IsoThumpable
+local function SetSpecificAttributes(sprite_name, java_object)
+
+	local health = nil
+	local sound_thump_string = nil
+	local sound_break_string = nil
+
+
+
 	for k, v in pairs(DWF_CheckTable) do
         if v[sprite_name] then
 	        if k == 1 then	--high_wooden_fancy_wall
-				return 50000
+				health = 50000
+				break
 			elseif k == 2 then	--high_metallic_barbed_fence_check
-				return 100000
+				health = 100000
+				sound_thump_string = "ZombieThumpMetal"
+				break
 			elseif k == 3 then		--high_metallic_fence_check
-				return 100000
+				health = 100000
+				sound_thump_string = "ZombieThumpMetal"
+				break
 			elseif k == 4  then		--high_metallic_fancy_fence_check
-				return 100000
-			elseif k == 5 then			--high_wooden_wall_check
-				return 50000
+				health = 100000
+				sound_thump_string = "ZombieThumpMetal"
+				break
+			elseif k == 5 then					--high_wooden_wall_check
+				health = 50000
+				break
 			elseif sprite_name == 7 then		--"high_metallic_military_fence_check"
-				return 70000
+				health = 70000
+				sound_thump_string = "ZombieThumpMetal"
+				break
+
 			elseif sprite_name == 8 then		--high_metallic_military_barbed_fence_check
-				return 70000
+				health = 70000
+				sound_thump_string = "ZombieThumpMetal"
+				break
+
 
 			end
         end
     end
-	print("DWF: COULDN'T FIND SPRITE NAME -> " .. sprite_name)
+
+	if health ~= nil then
+		java_object:setMaxHealth(health)
+		java_object:setHealth(health)
+	end
+
+
+	if sound_thump_string ~= nil then
+		java_object:setThumpSound(sound_thump_string)
+	end
+
+	if sound_break_string ~= nil then
+		java_object:setBreakSound(sound_break_string)
+	else
+		java_object:setBreakSound("BreakObject")
+
+	end
+
+
+	--print("DWF: COULDN'T FIND SPRITE NAME -> " .. sprite_name)
 	return 0
 end
 
@@ -242,15 +284,13 @@ local function CreateWall(sq, sprite_name, north)
 	javaObject:setIsThumpable(true)
 	javaObject:setModData(copyTable(modData))
 
-	-- TODO set different healths for different fences
-	--if sprite_name == 
 
-	local health = GetMaxHealth(sprite_name)
 
 	javaObject:setThumpDmg(1)
-	javaObject:setMaxHealth(health)			-- Stupidly high health, since it wouldn't make a lot of sense otherwise
-	javaObject:setHealth(health)			-- TODO make it a bit random
-	javaObject:setBreakSound("BreakObject")
+	SetSpecificAttributes(sprite_name, javaObject)
+
+
+
 	javaObject:setSpecialTooltip(false)
 	
     triggerEvent("OnObjectAdded", javaObject)
