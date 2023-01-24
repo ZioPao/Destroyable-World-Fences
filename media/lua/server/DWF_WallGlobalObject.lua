@@ -1,3 +1,5 @@
+if isClient() then return end
+
 DWF_WallGlobalObject = SGlobalObject:derive("DWS_WallGlobalObject")
 
 

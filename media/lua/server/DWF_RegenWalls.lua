@@ -192,26 +192,27 @@ end
 
 -- We need a stupidly high number
 local function GetMaxHealth(sprite_name)
-	for _, v in pairs(DWF_CheckTable) do
+	for k, v in pairs(DWF_CheckTable) do
         if v[sprite_name] then
-	        if sprite_name == "high_wooden_fancy_wall" then
+	        if k == 1 then	--high_wooden_fancy_wall
 				return 50000
-			elseif sprite_name == "high_metallic_barbed_fence_check" then
+			elseif k == 2 then	--high_metallic_barbed_fence_check
 				return 100000
-			elseif sprite_name == "high_metallic_fence_check" then
+			elseif k == 3 then		--high_metallic_fence_check
 				return 100000
-			elseif sprite_name == "high_metallic_fancy_fence_check" then
+			elseif k == 4  then		--high_metallic_fancy_fence_check
 				return 100000
-			elseif sprite_name == "high_wooden_wall_check" then
+			elseif k == 5 then			--high_wooden_wall_check
 				return 50000
-			elseif sprite_name == "high_metallic_military_fence_check" then
+			elseif sprite_name == 7 then		--"high_metallic_military_fence_check"
 				return 70000
-			elseif sprite_name == "high_metallic_military_barbed_fence_check" then
+			elseif sprite_name == 8 then		--high_metallic_military_barbed_fence_check
 				return 70000
 
 			end
         end
     end
+	print("DWF: COULDN'T FIND SPRITE NAME -> " .. sprite_name)
 	return 0
 end
 
