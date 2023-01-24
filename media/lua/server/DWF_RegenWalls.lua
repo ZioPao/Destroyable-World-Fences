@@ -190,6 +190,32 @@ local function GetWallDefFromSprite(spriteName)
 	return nil,false
 end
 
+-- We need a stupidly high number
+local function GetMaxHealth(sprite_name)
+	for _, v in pairs(DWF_CheckTable) do
+        if v[sprite_name] then
+	        if sprite_name == "high_wooden_fancy_wall" then
+				return 50000
+			elseif sprite_name == "high_metallic_barbed_fence_check" then
+				return 100000
+			elseif sprite_name == "high_metallic_fence_check" then
+				return 100000
+			elseif sprite_name == "high_metallic_fancy_fence_check" then
+				return 100000
+			elseif sprite_name == "high_wooden_wall_check" then
+				return 50000
+			elseif sprite_name == "high_metallic_military_fence_check" then
+				return 70000
+			elseif sprite_name == "high_metallic_military_barbed_fence_check" then
+				return 70000
+
+			end
+        end
+    end
+	return 0
+end
+
+
 ---@param sprite_name string
 ---@param north boolean
 local function CreateWall(sq, sprite_name, north)
@@ -216,11 +242,13 @@ local function CreateWall(sq, sprite_name, north)
 	javaObject:setModData(copyTable(modData))
 
 	-- TODO set different healths for different fences
-	-- if spritename == ....
+	--if sprite_name == 
+
+	local health = GetMaxHealth(sprite_name)
 
 	javaObject:setThumpDmg(1)
-	javaObject:setMaxHealth(100000)			-- Stupidly high health, since it wouldn't make a lot of sense otherwise
-	javaObject:setHealth(100000)			-- TODO make it a bit random
+	javaObject:setMaxHealth(health)			-- Stupidly high health, since it wouldn't make a lot of sense otherwise
+	javaObject:setHealth(health)			-- TODO make it a bit random
 	javaObject:setBreakSound("BreakObject")
 	javaObject:setSpecialTooltip(false)
 	
