@@ -9,13 +9,13 @@ function DMF_MakeDestroyable()
 			local sprite = obj:getSprite()
             if BrokenFences.getInstance():isBreakableObject(obj) then
 				--square:transmitRemoveItemFromSquare(obj)
-				obj:setMovedThumpable(true)
+				--obj:setMovedThumpable(true)
 
 			
-				print(obj:getThumpCondition())
+				--print(obj:getThumpCondition())
 
 				
-				print(sprite:getName())
+				--print(sprite:getName())
 				--print("Found fence!!")
 				--local test = obj:getModData()
 				--print(test)
@@ -67,3 +67,10 @@ end
 
 
 Events.OnTick.Add(DMF_MakeDestroyable)
+
+
+
+
+
+
+
