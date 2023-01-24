@@ -1,11 +1,3 @@
---
--- Created by IntelliJ IDEA.
--- User: RJ
--- Date: 30/04/14
--- Time: 09:57
--- To change this template use File | Settings | File Templates.
---
-
 if isClient() then return end
 
 require "Map/SGlobalObjectSystem"
@@ -20,16 +12,6 @@ end
 
 function DMF_WallSystem:initSystem()
 	SGlobalObjectSystem.initSystem(self)
-
-	-- Specify GlobalObjectSystem fields that should be saved.
-	self.system:setModDataKeys({})
-	
-	-- Specify GlobalObject fields that should be saved.
-	self.system:setObjectModDataKeys({
-		'trapType', 'trapBait', 'trapBaitDay', 'lastUpdate', 'baitAmountMulti', 'animal', 'animalHour',
-		'openSprite', 'closedSprite', 'zone', 'player', 'trappingSkill', 'destroyed'})
-
-	self:convertOldModData()
 end
 
 function DMF_WallSystem:convertOldModData()
@@ -86,7 +68,7 @@ end
 
 
 
-
+-- TODO Maybe add damage once in a while? Or maybe it's already done and we're overriding it?
 
 
 
