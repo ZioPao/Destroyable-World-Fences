@@ -1,0 +1,13 @@
+{
+    "Lua.diagnostics.globals": [
+        "SGlobalObject",
+        "SGlobalObjectSystem",
+        "instanceof",
+        "isClient",
+        "getWorld",
+        "IsoThumpable",
+        "copyTable",
+        "triggerEvent",
+        "MapObjects"
+    ]
+}

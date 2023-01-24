@@ -25,7 +25,7 @@ local table_sprites = {
     "fencing_01_60",        -- NorthWestCornerTrans
     "fencing_01_61",        -- None
 
-    -- Fancy metla fence
+    -- Fancy metal fence
     "fencing_01_64",        -- NorthWallTrans
     "fencing_01_65",        -- NorthWallTrans
     "fencing_01_66",        -- WestWallTrans
