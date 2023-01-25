@@ -192,18 +192,18 @@ end
 local function removeExistingLuaObject(square)
 	local luaObject = DWF_WallSystem.instance:getLuaObjectOnSquare(square)
 	if luaObject then
-		--print("Lua Object found")
-        --noise('removing luaObject at same location as newly-loaded isoObject')
 		DWF_WallSystem.instance:removeLuaObject(luaObject)
 	end
 end
 
 -- Returns def and if is north faced
 local function GetWallDefFromSprite(spriteName)
+
+	-- TODO do we need this?
 	if not spriteName then return nil end
 	for _, wall_def in pairs(DWF_Walls) do
-		if wall_def.west == spriteName or 
-			wall_def.end_west == spriteName or 
+		if wall_def.west == spriteName or
+			wall_def.end_west == spriteName or
 			wall_def.south_east_corner == spriteName then
 			return wall_def, false
 		end
@@ -252,10 +252,10 @@ local function CreateWall(sq, sprite_name, north)
 	javaObject:setIsContainer(false)
 	javaObject:setIsDoor(false)
 	javaObject:setIsDoorFrame(false)
-	javaObject:setCrossSpeed(1.0)
+	javaObject:setCrossSpeed(1.0)				-- maybe we should get the og object and reassign it?
 	javaObject:setBlockAllTheSquare(false)		-- Really important
 	javaObject:setName("Wall")
-	javaObject:setIsDismantable(true)
+	javaObject:setIsDismantable(true)			-- probably overwritten elsewhere, who cares again
 	javaObject:setCanBePlastered(false)
 
 	-- FIXME if is hoppable it'll break thupmable... and it doesnt overwrite anyway so who cares
@@ -299,7 +299,7 @@ local function NewWall(isoObject)
 	return javaObject
 end
 
-local PRIORITY = 1
+local PRIORITY = 5			-- TODO not sure about this, maybe priority = 1 causes more stutters?
 
 local function LoadWall(isoObject)
 	local spriteName = isoObject:getSprite():getName()
@@ -313,83 +313,10 @@ end
 
 
 
-
+-- Run in background when loading chunks
 for _, wall_def in pairs(DWF_Walls) do
 	local sprites = GetWallSprites(wall_def)
-
 
 	MapObjects.OnNewWithSprite(sprites, NewWall, PRIORITY)
 	MapObjects.OnLoadWithSprite(sprites, LoadWall, PRIORITY)
 end
-
-
-
-
-
-------------------------------------------------------------
-
-
---ObjectTypes
--- "normal", "jukebox", "wall", "stairsTW", "stairsTN", "stairsMW", "stairsMN", "stairsBW", "stairsBN", "UNUSED9", "UNUSED10",
--- "doorW", "doorN", "lightswitch", "radio", "curtainN", "curtainS", "curtainW", "curtainE", "doorFrW", "doorFrN", "tree",
--- "windowFN", "windowFW", "UNUSED24", "WestRoofB", "WestRoofM", "WestRoofT", "isMoveAbleObject",
-
---FlagTypes
---  "collideW", "collideN", "solidfloor", "noStart", "windowW", "windowN", "hidewalls", "exterior", "NoWallLighting",
--- "doorW", "doorN", "transparentW", "transparentN", "WallOverlay", "FloorOverlay", "vegitation", "burning", "burntOut",
--- "unflamable", "cutW", "cutN", "tableN", "tableNW", "tableW", "tableSW", "tableS", "tableSE", "tableE", "tableNE",
---  "halfheight", "HasRainSplashes", "HasRaindrop", "solid", "trans", "pushable", "solidtrans", "invisible", "floorS",
--- "floorE", "shelfS", "shelfE", "alwaysDraw", "ontable", "transparentFloor", "climbSheetW", "climbSheetN", "climbSheetTopN",
--- "climbSheetTopW", "attachtostairs", "sheetCurtains", "waterPiped", "HoppableN", "HoppableW", "bed", "blueprint",
--- "canPathW", "canPathN", "blocksight", "climbSheetE", "climbSheetS", "climbSheetTopE", "climbSheetTopS", "makeWindowInvincible",
--- "water", "canBeCut", "canBeRemoved", "taintedWater", "smoke", "attachedN", "attachedS", "attachedE", "attachedW",
--- "attachedFloor", "attachedSurface", "attachedCeiling", "attachedNW", "ForceAmbient", "WallSE", "WindowN", "WindowW",
--- "FloorHeightOneThird", "FloorHeightTwoThirds", "CantClimb", "diamondFloor", "attachedSE", "TallHoppableW", "WallWTrans",
--- "TallHoppableN", "WallNTrans", "container", "DoorWallW", "DoorWallN", "WallW", "WallN", "WallNW", "SpearOnlyAttackThrough", "forceRender"
-
-
--- local specialOverrideExceptions = {"IsoCurtain","IsoDoor","IsoWindow","IsoBarricade","IsoLightSwitch"}
--- ---Vanilla has a getFloor but it causes layering issues if there's objects over the floor - like walls
--- ---@param isoGridSquare IsoGridSquare
--- local function ifFlagTypeGetObject(isoGridSquare, isoFlagType)
---     local isoObjects = isoGridSquare:getObjects()
-
---     local objWithFlagFound
---     local lastSpriteObject
-
---     if isoFlagType == IsoFlagType.solidfloor and isoGridSquare:getProperties():Is("BlocksPlacement") then return end
-
---     for i=0, isoObjects:size()-1 do
---         ---@type IsoObject
---         local isoObj = isoObjects:get(i)
---         if isoObj then
---             local isoObjSprite = isoObj:getSprite()
---             local isoObjSpriteName = isoObjSprite:getName()
---             if isoObjSprite and isoObjSpriteName then
---                 if isoObj:getType()==IsoObjectType.wall and string.find(isoObjSpriteName, "roofs") then
---                 else
---                     if isoObjSprite:getProperties():Is(isoFlagType) then
---                         objWithFlagFound = true
---                         lastSpriteObject = i
---                     end
-
---                     if objWithFlagFound then
---                         if (not isoGridSquare:getProperties():Is("IsMoveAble")) then
---                             lastSpriteObject = i
---                         end
---                         for _,type in pairs(specialOverrideExceptions) do
---                             if instanceof(isoObj, type) then
---                                 lastSpriteObject = i
---                             end
---                         end
---                     end
---                 end
---             end
---         end
---     end
---     if objWithFlagFound and lastSpriteObject then
---         return isoObjects:get(lastSpriteObject)
---     end
--- end
-
-
