@@ -86,6 +86,9 @@ local high_wooden_fancy_wall_check = {
     fencing_01_11 = true,        -- WestWall
     fencing_01_12 = true,        -- NorthWestCorner
     fencing_01_13 = true,        -- SouthEastCorner
+	parameters = {
+		health = 50000,
+	}
 }
 table.insert(DWF_CheckTable, high_wooden_fancy_wall_check)
 
@@ -96,6 +99,10 @@ local high_metallic_barbed_fence_check = {
     fencing_01_51 = true,        -- WestWallTrans
     fencing_01_52 = true,        -- NorthWestCornerTrans
     fencing_01_53 = true,        -- None
+	parameters = {
+		health = 100000,
+		sound_thump_string = "ZombieThumpMetal"
+	}
 }
 table.insert(DWF_CheckTable, high_metallic_barbed_fence_check)
 
@@ -107,6 +114,10 @@ local high_metallic_fence_check = {
     fencing_01_59 = true,        -- WestWallTrans
     fencing_01_60 = true,        -- NorthWestCornerTrans
     fencing_01_61 = true,        -- None
+	parameters = {
+		health = 100000,
+		sound_thump_string = "ZombieThumpMetal"
+	}
 }
 table.insert(DWF_CheckTable, high_metallic_fence_check)
 
@@ -118,6 +129,10 @@ local high_metallic_fancy_fence_check = {
     fencing_01_67 = true,        -- WestWallTrans
     fencing_01_68 = true,        -- NorthWestCornerTrans
     fencing_01_69 = true,        -- None
+	parameters = {
+		health = 100000,
+		sound_thump_string = "ZombieThumpMetal"
+	}
 }
 table.insert(DWF_CheckTable, high_metallic_fancy_fence_check)
 
@@ -126,6 +141,9 @@ local high_wooden_wall_check = {
     fencing_01_73 = true,
     fencing_01_74 = true,
     fencing_01_75 = true,
+	parameters = {
+		health = 50000,
+	}
 }
 table.insert(DWF_CheckTable, high_wooden_wall_check)
 
@@ -135,6 +153,10 @@ local high_metallic_military_fence_check = {
     fencing_01_82 = true,
     fencing_01_83 = true,
     fencing_01_84 = true,
+	parameters = {
+		health = 70000,
+		sound_thump_string = "ZombieThumpMetal"
+	}
 }
 table.insert(DWF_CheckTable, high_metallic_military_fence_check)
 
@@ -144,6 +166,10 @@ local high_metallic_military_barbed_fence_check = {
     fencing_01_90 = true,
     fencing_01_91 = true,
     fencing_01_92 = true,
+	parameters = {
+		health = 70000,
+		sound_thump_string = "ZombieThumpMetal"
+	}
 }
 table.insert(DWF_CheckTable, high_metallic_military_barbed_fence_check)
 
@@ -194,68 +220,21 @@ end
 ---@param sprite_name string
 ---@param java_object IsoThumpable
 local function SetSpecificAttributes(sprite_name, java_object)
-
-	local health = nil
-	local sound_thump_string = nil
-	local sound_break_string = nil
-
-
-
-	for k, v in pairs(DWF_CheckTable) do
+	for _, v in pairs(DWF_CheckTable) do
         if v[sprite_name] then
-	        if k == 1 then	--high_wooden_fancy_wall
-				health = 50000
-				break
-			elseif k == 2 then	--high_metallic_barbed_fence_check
-				health = 100000
-				sound_thump_string = "ZombieThumpMetal"
-				break
-			elseif k == 3 then		--high_metallic_fence_check
-				health = 100000
-				sound_thump_string = "ZombieThumpMetal"
-				break
-			elseif k == 4  then		--high_metallic_fancy_fence_check
-				health = 100000
-				sound_thump_string = "ZombieThumpMetal"
-				break
-			elseif k == 5 then					--high_wooden_wall_check
-				health = 50000
-				break
-			elseif sprite_name == 7 then		--"high_metallic_military_fence_check"
-				health = 70000
-				sound_thump_string = "ZombieThumpMetal"
-				break
-
-			elseif sprite_name == 8 then		--high_metallic_military_barbed_fence_check
-				health = 70000
-				sound_thump_string = "ZombieThumpMetal"
-				break
-
-
+			if v.parameters.health then
+				java_object:setMaxHealth(v.parameters.health)
+				java_object:setHealth(v.parameters.health)
 			end
+
+			if v.parameters.sound_thump_string then
+				java_object:setThumpSound(v.parameters.sound_thump_string)
+			end
+
+			break
+			
         end
     end
-
-	if health ~= nil then
-		java_object:setMaxHealth(health)
-		java_object:setHealth(health)
-	end
-
-
-	if sound_thump_string ~= nil then
-		java_object:setThumpSound(sound_thump_string)
-	end
-
-	if sound_break_string ~= nil then
-		java_object:setBreakSound(sound_break_string)
-	else
-		java_object:setBreakSound("BreakObject")
-
-	end
-
-
-	--print("DWF: COULDN'T FIND SPRITE NAME -> " .. sprite_name)
-	return 0
 end
 
 
