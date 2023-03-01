@@ -87,7 +87,7 @@ local high_wooden_fancy_wall_check = {
     fencing_01_12 = true,        -- NorthWestCorner
     fencing_01_13 = true,        -- SouthEastCorner
 	parameters = {
-		health = 50000,
+		health =  SandboxVars.DWF.HealthHighWoodenFancyWall,
 	}
 }
 table.insert(DWF_CheckTable, high_wooden_fancy_wall_check)
@@ -100,7 +100,7 @@ local high_metallic_barbed_fence_check = {
     fencing_01_52 = true,        -- NorthWestCornerTrans
     fencing_01_53 = true,        -- None
 	parameters = {
-		health = 100000,
+		health = SandboxVars.DWF.HealthHighMetallicBarbedFence,
 		sound_thump_string = "ZombieThumpMetal"
 	}
 }
@@ -115,7 +115,7 @@ local high_metallic_fence_check = {
     fencing_01_60 = true,        -- NorthWestCornerTrans
     fencing_01_61 = true,        -- None
 	parameters = {
-		health = 100000,
+		health = SandboxVars.DWF.HealthHighMetallicFence,
 		sound_thump_string = "ZombieThumpMetal"
 	}
 }
@@ -130,7 +130,7 @@ local high_metallic_fancy_fence_check = {
     fencing_01_68 = true,        -- NorthWestCornerTrans
     fencing_01_69 = true,        -- None
 	parameters = {
-		health = 100000,
+		health = SandboxVars.DWF.HealthHighMetallicFancyFence,
 		sound_thump_string = "ZombieThumpMetal"
 	}
 }
@@ -142,7 +142,7 @@ local high_wooden_wall_check = {
     fencing_01_74 = true,
     fencing_01_75 = true,
 	parameters = {
-		health = 50000,
+		health = SandboxVars.DWF.HealthHighWoodenWall,
 	}
 }
 table.insert(DWF_CheckTable, high_wooden_wall_check)
@@ -154,7 +154,7 @@ local high_metallic_military_fence_check = {
     fencing_01_83 = true,
     fencing_01_84 = true,
 	parameters = {
-		health = 70000,
+		health = SandboxVars.DWF.HealthHighMetallicMilitaryFence,
 		sound_thump_string = "ZombieThumpMetal"
 	}
 }
@@ -167,7 +167,7 @@ local high_metallic_military_barbed_fence_check = {
     fencing_01_91 = true,
     fencing_01_92 = true,
 	parameters = {
-		health = 70000,
+		health = SandboxVars.DWF.HealthHighMetallicMilitaryBarbedFence,
 		sound_thump_string = "ZombieThumpMetal"
 	}
 }
