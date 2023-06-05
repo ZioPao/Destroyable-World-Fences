@@ -3,6 +3,10 @@ if isClient() then return end
 -------------------------------------------------------------------------------
 DWF_Walls = {}
 
+DEBUG = true
+
+
+
 local high_wooden_fancy_wall = {}
 high_wooden_fancy_wall.start_north = "fencing_01_08"        -- NorthWall
 high_wooden_fancy_wall.north = "fencing_01_09"        -- NorthWall
@@ -88,6 +92,7 @@ local high_wooden_fancy_wall_check = {
     fencing_01_13 = true,        -- SouthEastCorner
 	parameters = {
 		health =  SandboxVars.DWF.HealthHighWoodenFancyWall,
+		zombieAmount = SandboxVars.DWF.AmountNecessaryWoodenFancyWall
 	}
 }
 table.insert(DWF_CheckTable, high_wooden_fancy_wall_check)
@@ -101,6 +106,7 @@ local high_metallic_barbed_fence_check = {
     fencing_01_53 = true,        -- None
 	parameters = {
 		health = SandboxVars.DWF.HealthHighMetallicBarbedFence,
+		zombieAmount = SandboxVars.DWF.AmountNecessaryHighMetallicBarbedFence,
 		sound_thump_string = "ZombieThumpMetal"
 	}
 }
@@ -116,6 +122,7 @@ local high_metallic_fence_check = {
     fencing_01_61 = true,        -- None
 	parameters = {
 		health = SandboxVars.DWF.HealthHighMetallicFence,
+		zombieAmount = SandboxVars.DWF.AmountNecessaryHighMetallicFence,
 		sound_thump_string = "ZombieThumpMetal"
 	}
 }
@@ -131,6 +138,7 @@ local high_metallic_fancy_fence_check = {
     fencing_01_69 = true,        -- None
 	parameters = {
 		health = SandboxVars.DWF.HealthHighMetallicFancyFence,
+		zombieAmount = SandboxVars.DWF.AmountNecessaryHighMetallicFancyFence,
 		sound_thump_string = "ZombieThumpMetal"
 	}
 }
@@ -143,6 +151,8 @@ local high_wooden_wall_check = {
     fencing_01_75 = true,
 	parameters = {
 		health = SandboxVars.DWF.HealthHighWoodenWall,
+		zombieAmount = SandboxVars.DWF.AmountNecessaryHighWoodenWall,
+
 	}
 }
 table.insert(DWF_CheckTable, high_wooden_wall_check)
@@ -155,6 +165,7 @@ local high_metallic_military_fence_check = {
     fencing_01_84 = true,
 	parameters = {
 		health = SandboxVars.DWF.HealthHighMetallicMilitaryFence,
+		zombieAmount = SandboxVars.DWF.AmountNecessaryHighMetallicMilitaryFence,
 		sound_thump_string = "ZombieThumpMetal"
 	}
 }
@@ -168,6 +179,7 @@ local high_metallic_military_barbed_fence_check = {
     fencing_01_92 = true,
 	parameters = {
 		health = SandboxVars.DWF.HealthHighMetallicMilitaryBarbedFence,
+		zombieAmount = SandboxVars.DWF.AmountNecessaryHighMetallicMilitaryBarbedFence,
 		sound_thump_string = "ZombieThumpMetal"
 	}
 }
@@ -226,13 +238,17 @@ local function SetSpecificAttributes(sprite_name, java_object)
 				java_object:setMaxHealth(v.parameters.health)
 				java_object:setHealth(v.parameters.health)
 			end
-
 			if v.parameters.sound_thump_string then
 				java_object:setThumpSound(v.parameters.sound_thump_string)
 			end
 
+			if v.parameters.zombieAmount then
+				java_object:getModData()['zombieAmount'] = v.parameters.zombieAmount
+				javaObject:setThumpDmg(v.parameters.zombieAmount)
+
+			end
+
 			break
-			
         end
     end
 end
@@ -264,15 +280,12 @@ local function CreateWall(sq, sprite_name, north)
 	javaObject:setModData(copyTable(modData))
 
 
-
-	javaObject:setThumpDmg(1)
+	-- TODO This is the thing that we need to mess with
 	SetSpecificAttributes(sprite_name, javaObject)
-
-
-
 	javaObject:setSpecialTooltip(false)
-	
+
     triggerEvent("OnObjectAdded", javaObject)
+
 
 	return javaObject
 end
@@ -320,3 +333,13 @@ for _, wall_def in pairs(DWF_Walls) do
 	MapObjects.OnNewWithSprite(sprites, NewWall, PRIORITY)
 	MapObjects.OnLoadWithSprite(sprites, LoadWall, PRIORITY)
 end
+
+
+
+
+
+
+
+
+
+

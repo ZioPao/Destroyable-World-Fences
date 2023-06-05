@@ -63,13 +63,6 @@ SGlobalObjectSystem.RegisterSystemClass(DWF_WallSystem)
 
 
 
-
-
-
-
-
-
-
 -- TODO Maybe add damage once in a while? Or maybe it's already done and we're overriding it?
 
 
