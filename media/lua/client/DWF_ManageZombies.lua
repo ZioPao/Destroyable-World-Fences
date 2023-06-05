@@ -1,10 +1,8 @@
 
-local function TestZombie(zombie)
+local function ManageZombieThump(zombie)
     -- check if near another zombie!
 
     local thumpTarget = zombie:getThumpTarget()
-    
-
     if thumpTarget then
         local necessaryZombieAmount = thumpTarget:getModData()['zombieAmount']
         if necessaryZombieAmount == nil then
@@ -20,7 +18,6 @@ local function TestZombie(zombie)
         local cell = getCell()
 
         local dist = 4
-
         local thumpingZombiesAmount = 0
         for x = tempX - dist, tempX + dist do
             for y = tempY - dist, tempY + dist do
@@ -28,12 +25,9 @@ local function TestZombie(zombie)
                 for i=1,sq:getMovingObjects():size() do
                     local obj = sq:getMovingObjects():get(i - 1)
                     if instanceof(obj, "IsoZombie") then
-                        if obj:getThumpTarget() ~= nil then
-                            thumpingZombiesAmount = thumpingZombiesAmount + 1
-
-                        end
-
-
+                        --if obj:getThumpTarget() ~= nil then
+                        thumpingZombiesAmount = thumpingZombiesAmount + 1
+                       --end
                         -- if obj:getThumpTarget() == thumpTarget then
                         -- end
                     end
@@ -44,11 +38,15 @@ local function TestZombie(zombie)
         end
 
         print("Amount of zombies: " .. tonumber(thumpingZombiesAmount))
-
-        -- TODO check for thumpTarget so we have different stats
+        print("Necessary amount: " .. tonumber(necessaryZombieAmount))
         if thumpingZombiesAmount < necessaryZombieAmount then
             zombie:setThumpTarget(nil)
-            print("No more thump! Not enough zombies!")
+
+            -- timer:Simple(ZombRand(1,2), function()
+            --     print("No more thump! Not enough zombies!")
+
+            --     zombie:setThumpTarget(nil)
+            -- end)
         end
     end
     
@@ -58,6 +56,4 @@ local function TestZombie(zombie)
     --zombie:setThumpTarget(nil)
 end
 
-
-
-Events.OnZombieUpdate.Add(TestZombie)
+Events.OnZombieUpdate.Add(ManageZombieThump)

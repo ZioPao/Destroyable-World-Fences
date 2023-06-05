@@ -229,25 +229,23 @@ local function GetWallDefFromSprite(spriteName)
 end
 
 
----@param sprite_name string
----@param java_object IsoThumpable
-local function SetSpecificAttributes(sprite_name, java_object)
+---@param spriteName string
+---@param javaObject IsoThumpable
+local function SetSpecificAttributes(spriteName, javaObject)
 	for _, v in pairs(DWF_CheckTable) do
-        if v[sprite_name] then
+        if v[spriteName] then
 			if v.parameters.health then
-				java_object:setMaxHealth(v.parameters.health)
-				java_object:setHealth(v.parameters.health)
+				javaObject:setMaxHealth(v.parameters.health)
+				javaObject:setHealth(v.parameters.health)
 			end
 			if v.parameters.sound_thump_string then
-				java_object:setThumpSound(v.parameters.sound_thump_string)
+				javaObject:setThumpSound(v.parameters.sound_thump_string)
 			end
 
 			if v.parameters.zombieAmount then
-				java_object:getModData()['zombieAmount'] = v.parameters.zombieAmount
+				javaObject:getModData()['zombieAmount'] = v.parameters.zombieAmount
 				javaObject:setThumpDmg(v.parameters.zombieAmount)
-
 			end
-
 			break
         end
     end

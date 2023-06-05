@@ -4,8 +4,8 @@ option DWF.HealthWoodenFancyWall
 {
 	type = integer,
 	min = 1,
-	max = 1000,
-	default = 100,
+	max = 10000000,
+	default = 20000,
 	page = DWF,
 	translation = DWF_HealthHighWoodenFancyWall,
 }
@@ -24,8 +24,8 @@ option DWF.HealthHighMetallicBarbedFence
 {
 	type = integer,
 	min = 1,
-	max = 1000,
-	default = 250,
+	max = 10000000,
+	default = 50000,
 
 	page = DWF,
 	translation = DWF_HealthHighMetallicBarbedFence,
@@ -46,8 +46,8 @@ option DWF.HealthHighMetallicFence
 {
 	type = integer,
 	min = 1,
-	max = 1000,
-	default = 225,
+	max = 10000000,
+	default = 30000,
 
 	page = DWF,
 	translation = DWF_HealthHighMetallicFence,
@@ -69,8 +69,8 @@ option DWF.HealthHighMetallicFancyFence
 {
 	type = integer,
 	min = 1,
-	max = 1000,
-	default = 200,
+	max = 10000000,
+	default = 30000,
 
 	page = DWF,
 	translation = DWF_HealthHighMetallicFancyFence,
@@ -91,8 +91,8 @@ option DWF.HealthHighWoodenWall
 {
 	type = integer,
 	min = 1,
-	max = 1000,
-	default = 120,
+	max = 10000000,
+	default = 12000,
 
 	page = DWF,
 	translation = DWF_HealthHighWoodenWall,
@@ -113,8 +113,8 @@ option DWF.HealthHighMetallicMilitaryFence
 {
 	type = integer,
 	min = 1,
-	max = 1000,
-	default = 250,
+	max = 10000000,
+	default = 30000,
 
 	page = DWF,
 	translation = DWF_HealthHighMetallicMilitaryFence,
@@ -134,8 +134,8 @@ option DWF.HealthHighMetallicMilitaryBarbedFence
 {
 	type = integer,
 	min = 1,
-	max = 1000,
-	default = 250,
+	max = 10000000,
+	default = 30000,
 
 	page = DWF,
 	translation = DWF_HealthHighMetallicMilitaryBarbedFence,
