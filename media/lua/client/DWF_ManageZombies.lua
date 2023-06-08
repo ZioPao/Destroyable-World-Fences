@@ -1,16 +1,15 @@
 
 local function ManageZombieThump(zombie)
-    -- check if near another zombie!
-
     local thumpTarget = zombie:getThumpTarget()
     if thumpTarget then
         local necessaryZombieAmount = thumpTarget:getModData()['zombieAmount']
         if necessaryZombieAmount == nil then
-            print("Couldn't find zombieAmount")
+            if SandboxVars.DWF.EnableDebugMessages then print("Couldn't find zombieAmount") end
             return
-        end      -- For normal objects, we don't care, only our special ones
+        end
 
-        print("ThumpTarget found! Checking near zombies!")
+        -- For normal objects, we don't care, only our special ones
+        if SandboxVars.DWF.EnableDebugMessages then print("ThumpTarget found! Checking near zombies!") end
 
         local tempX = zombie:getX()
         local tempY = zombie:getY()
@@ -25,11 +24,7 @@ local function ManageZombieThump(zombie)
                 for i=1,sq:getMovingObjects():size() do
                     local obj = sq:getMovingObjects():get(i - 1)
                     if instanceof(obj, "IsoZombie") then
-                        --if obj:getThumpTarget() ~= nil then
                         thumpingZombiesAmount = thumpingZombiesAmount + 1
-                       --end
-                        -- if obj:getThumpTarget() == thumpTarget then
-                        -- end
                     end
                 end
 
@@ -37,23 +32,17 @@ local function ManageZombieThump(zombie)
             end
         end
 
-        print("Amount of zombies: " .. tonumber(thumpingZombiesAmount))
-        print("Necessary amount: " .. tonumber(necessaryZombieAmount))
+        if SandboxVars.DWF.EnableDebugMessages then
+            print("Amount of zombies: " .. tonumber(thumpingZombiesAmount))
+            print("Necessary amount: " .. tonumber(necessaryZombieAmount))
+        end
+
         if thumpingZombiesAmount < necessaryZombieAmount then
             zombie:setThumpTarget(nil)
-
-            -- timer:Simple(ZombRand(1,2), function()
-            --     print("No more thump! Not enough zombies!")
-
-            --     zombie:setThumpTarget(nil)
-            -- end)
+            zombie:setTarget(nil)
         end
     end
     
-
-
-    --print("Stop thumping!")
-    --zombie:setThumpTarget(nil)
 end
 
 Events.OnZombieUpdate.Add(ManageZombieThump)

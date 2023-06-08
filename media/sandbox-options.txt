@@ -1,5 +1,13 @@
 VERSION = 1,
 
+option DWF.EnableDebugMessages
+{
+	type = boolean,
+	default = false,
+	page = DWF,
+	translation = DWF_EnableDebugMessages,
+}
+
 option DWF.HealthWoodenFancyWall
 {
 	type = integer,
