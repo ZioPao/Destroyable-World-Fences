@@ -17,6 +17,7 @@ option DWF.HealthWoodenFancyWall
 	page = DWF,
 	translation = DWF_HealthHighWoodenFancyWall,
 }
+
 option DWF.AmountNecessaryWoodenFancyWall
 {
 	type = integer,
@@ -26,7 +27,6 @@ option DWF.AmountNecessaryWoodenFancyWall
 	page = DWF,
 	translation = DWF_AmountNecessaryWoodenFancyWall,
 }
-
 
 option DWF.HealthHighMetallicBarbedFence
 {
@@ -38,6 +38,7 @@ option DWF.HealthHighMetallicBarbedFence
 	page = DWF,
 	translation = DWF_HealthHighMetallicBarbedFence,
 }
+
 option DWF.AmountNecessaryHighMetallicBarbedFence
 {
 	type = integer,
@@ -49,7 +50,6 @@ option DWF.AmountNecessaryHighMetallicBarbedFence
 	translation = DWF_AmountNecessaryHighMetallicBarbedFence,
 }
 
-
 option DWF.HealthHighMetallicFence
 {
 	type = integer,
@@ -60,6 +60,7 @@ option DWF.HealthHighMetallicFence
 	page = DWF,
 	translation = DWF_HealthHighMetallicFence,
 }
+
 option DWF.AmountNecessaryHighMetallicFence
 {
 	type = integer,
@@ -71,8 +72,6 @@ option DWF.AmountNecessaryHighMetallicFence
 	translation = DWF_AmountNecessaryHighMetallicFence,
 }
 
-
-
 option DWF.HealthHighMetallicFancyFence
 {
 	type = integer,
@@ -83,6 +82,7 @@ option DWF.HealthHighMetallicFancyFence
 	page = DWF,
 	translation = DWF_HealthHighMetallicFancyFence,
 }
+
 option DWF.AmountNecessaryHighMetallicFancyFence
 {
 	type = integer,
@@ -94,7 +94,6 @@ option DWF.AmountNecessaryHighMetallicFancyFence
 	translation = DWF_AmountNecessaryHighMetallicFancyFence,
 }
 
-
 option DWF.HealthHighWoodenWall
 {
 	type = integer,
@@ -105,6 +104,7 @@ option DWF.HealthHighWoodenWall
 	page = DWF,
 	translation = DWF_HealthHighWoodenWall,
 }
+
 option DWF.AmountNecessaryHighWoodenWall
 {
 	type = integer,
@@ -116,7 +116,6 @@ option DWF.AmountNecessaryHighWoodenWall
 	translation = DWF_AmountNecessaryHighWoodenWall,
 }
 
-
 option DWF.HealthHighMetallicMilitaryFence
 {
 	type = integer,
@@ -127,6 +126,7 @@ option DWF.HealthHighMetallicMilitaryFence
 	page = DWF,
 	translation = DWF_HealthHighMetallicMilitaryFence,
 }
+
 option DWF.AmountNecessaryHighMetallicMilitaryFence
 {
 	type = integer,
@@ -148,6 +148,7 @@ option DWF.HealthHighMetallicMilitaryBarbedFence
 	page = DWF,
 	translation = DWF_HealthHighMetallicMilitaryBarbedFence,
 }
+
 option DWF.AmountNecessaryHighMetallicMilitaryBarbedFence
 {
 	type = integer,

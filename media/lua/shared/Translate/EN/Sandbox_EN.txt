@@ -6,22 +6,22 @@ Sandbox_EN = {
 	Sandbox_DWF_HealthHighWoodenFancyWall = "Health of Wooden Fancy Walls",
 	Sandbox_DWF_AmountNecessaryWoodenFancyWall = "Zombie amount to thump Wooden Fancy Walls",
 
-	Sandbox_DWF_HealthHighMetallicBarbedFence = "Health of High Metallic fences with barbed wire",
-	Sandbox_DWF_AmountNecessaryHighMetallicBarbedFence = "Zombie amount to thump Metallic fences with barbed wire",
+	Sandbox_DWF_HealthHighMetallicBarbedFence = "Health of Military Fencing",
+	Sandbox_DWF_AmountNecessaryHighMetallicBarbedFence = "Zombie amount necessary to thump Military Fencing",
 
-    Sandbox_DWF_HealthHighMetallicFence = "Health of High Metallic fences",
-	Sandbox_DWF_AmountNecessaryHighMetallicFence = "Zombie amount to thump High Metallic fences",
+    Sandbox_DWF_HealthHighMetallicFence = "Health of High Chainlink Fences",
+	Sandbox_DWF_AmountNecessaryHighMetallicFence = "Zombie amount necessary to thump High Chainlink Fences",
 
-    Sandbox_DWF_HealthHighMetallicFancyFence = "Health of High Metallic fancy fences",
-	Sandbox_DWF_AmountNecessaryHighMetallicFancyFence = "Zombie amount to thump High Metallic fancy fences",
+    Sandbox_DWF_HealthHighMetallicFancyFence = "Health of Black Metal Fancy Fences",
+	Sandbox_DWF_AmountNecessaryHighMetallicFancyFence = "Zombie amount necessary to thump Black Metal Fancy Fences",
 
-    Sandbox_DWF_HealthHighWoodenWall = "Health of High Wooden fancy walls",
-	Sandbox_DWF_AmountNecessaryHighWoodenWall = "Zombie amount to thump High Wooden fancy fences",
+    Sandbox_DWF_HealthHighWoodenWall = "Health of High Wooden Straight Walls",
+	Sandbox_DWF_AmountNecessaryHighWoodenWall = "Zombie amount necessary to thump High Wooden Straight Walls",
 
-    Sandbox_DWF_HealthHighMetallicMilitaryFence = "Health of High Metallic Military fences",
-	Sandbox_DWF_AmountNecessaryHighMetallicMilitaryFence = "Zombie amount to thump High Metallic Military fences",
+    Sandbox_DWF_HealthHighMetallicMilitaryFence = "Health of Portable Fencing",
+	Sandbox_DWF_AmountNecessaryHighMetallicMilitaryFence = "Zombie amount necessary to thump Portable Fencing",
 
-    Sandbox_DWF_HealthHighMetallicMilitaryBarbedFence = "Health of High Metallic Military fences with barbed wire",
-	Sandbox_DWF_AmountNecessaryHighMetallicMilitaryBarbedFence = "Zombie amount to thump High Metallic Military fences with barbed wire"",
+    Sandbox_DWF_HealthHighMetallicMilitaryBarbedFence = "Health of Portable Barbed Fencing",
+	Sandbox_DWF_AmountNecessaryHighMetallicMilitaryBarbedFence = "Zombie amount necessary to thump Portable Barbed Fencing",
 
 }

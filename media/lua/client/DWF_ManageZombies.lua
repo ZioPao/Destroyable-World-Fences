@@ -61,22 +61,24 @@ local function ManageZombieThump(zombie)
             end
         end
 
-        --if SandboxVars.DWF.EnableDebugMessages then
+        if SandboxVars.DWF.EnableDebugMessages then
             print("Amount of zombies: " .. tonumber(thumpingZombiesAmount))
             print("Necessary amount: " .. tonumber(necessaryZombieAmount))
-        --end
+        end
 
         if thumpingZombiesAmount < necessaryZombieAmount then
             zombie:setThumpTarget(nil)
             zombie:setTarget(nil)
-            zombie:setCanWalk(false)
+            zombie:setUseless(true)
+
+
+            timer:Simple(ZombRand(1,3), function()
+                zombie:setUseless(false)
+            end)
+
         end
         if SandboxVars.DWF.EnableDebugMessages then print(thumpTarget:getThumpCondition()) end
     end
 end
-
-
-
-
 
 Events.OnZombieUpdate.Add(ManageZombieThump)
