@@ -3,10 +3,6 @@ if isClient() then return end
 -------------------------------------------------------------------------------
 DWF_Walls = {}
 
-DEBUG = true
-
-
-
 local high_wooden_fancy_wall = {}
 high_wooden_fancy_wall.start_north = "fencing_01_08"        -- NorthWall
 high_wooden_fancy_wall.north = "fencing_01_09"        -- NorthWall
@@ -70,13 +66,6 @@ high_metallic_military_barbed_fence.end_west = "fencing_01_91"       -- WestWall
 high_metallic_military_barbed_fence.north_west_corner = "fencing_01_92"        -- NorthWestCorner
 high_metallic_military_barbed_fence.is_transparent = true
 table.insert(DWF_Walls, high_metallic_military_barbed_fence)
-
-
-
-
-
-
-
 
 
 -- To make it faster, make another table with a clear reference to each fencing so that we can link it easier to the correct tile
@@ -210,7 +199,6 @@ end
 
 -- Returns def and if is north faced
 local function GetWallDefFromSprite(spriteName)
-
 	-- TODO do we need this?
 	if not spriteName then return nil end
 	for _, wall_def in pairs(DWF_Walls) do
@@ -298,19 +286,19 @@ local function NewWall(isoObject)
 
 	local sq = isoObject:getSquare()
 	removeExistingLuaObject(sq)
-	
+
 	local javaObject = CreateWall(sq, isoObject:getSprite():getName(), north)
 	local index = isoObject:getObjectIndex()
 	sq:transmitRemoveItemFromSquare(isoObject)
 	sq:AddSpecialObject(javaObject, index)
-	
+
 	--initObjectModData(javaObject, wall_def, north)
 
 	javaObject:transmitCompleteItemToClients()
 	return javaObject
 end
 
-local PRIORITY = 5			-- TODO not sure about this, maybe priority = 1 causes more stutters?
+local PRIORITY = 5
 
 local function LoadWall(isoObject)
 	local spriteName = isoObject:getSprite():getName()
@@ -323,7 +311,6 @@ local function LoadWall(isoObject)
 end
 
 
-
 -- Run in background when loading chunks
 for _, wall_def in pairs(DWF_Walls) do
 	local sprites = GetWallSprites(wall_def)
@@ -331,13 +318,3 @@ for _, wall_def in pairs(DWF_Walls) do
 	MapObjects.OnNewWithSprite(sprites, NewWall, PRIORITY)
 	MapObjects.OnLoadWithSprite(sprites, LoadWall, PRIORITY)
 end
-
-
-
-
-
-
-
-
-
-

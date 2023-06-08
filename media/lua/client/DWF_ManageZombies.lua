@@ -1,11 +1,21 @@
+--* Bunch of 'hacks' to lessen the impact of this abomination *--
+
+-- Adds a delay between each OnZombieUpdate. Probably the most aggressive setting on the threes.
+-- The delay variable is the time in ms
 local lessPreciseTimerHack = false
 local timerDelay
 local delay = 1
 
+-- Checks the amount of zombies based on a simple check of the size of getMovingObjects() on a square, instead of checking
+-- if each IsoMovingObject is a zombie or not. Shouldn't affect gameplay too much, helps performance a ton
 local lessPreciseObjectsCheckHack = true
 
-local chanceOfSkip = 80
+-- Basically a more 'randomic' way of having a delay between each OnZombieUpdate. The higher the chanceOfSkip is, 
+-- the less this function will be actually run.
 local skipZombieUpdateHack = true
+local chanceOfSkip = 80
+
+--------------------------------------------------------------------------
 
 local function ManageZombieThump(zombie)
     if SandboxVars.DWF.EnableDebugMessages then print("Running ManageZombieThump") end
