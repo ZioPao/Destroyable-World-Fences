@@ -4,24 +4,21 @@ Sandbox_EN = {
 	Sandbox_DWF_DebugMessages = "Enable Debug Messages",
 
 	Sandbox_DWF_HealthHighWoodenFancyWall = "Health of Wooden Fancy Walls",
-	Sandbox_DWF_AmountNecessaryWoodenFancyWall = "Zombie amount to thump Wooden Fancy Walls",
-
 	Sandbox_DWF_HealthHighMetallicBarbedFence = "Health of Military Fencing",
-	Sandbox_DWF_AmountNecessaryHighMetallicBarbedFence = "Zombie amount necessary to thump Military Fencing",
-
     Sandbox_DWF_HealthHighMetallicFence = "Health of High Chainlink Fences",
-	Sandbox_DWF_AmountNecessaryHighMetallicFence = "Zombie amount necessary to thump High Chainlink Fences",
-
     Sandbox_DWF_HealthHighMetallicFancyFence = "Health of Black Metal Fancy Fences",
-	Sandbox_DWF_AmountNecessaryHighMetallicFancyFence = "Zombie amount necessary to thump Black Metal Fancy Fences",
-
     Sandbox_DWF_HealthHighWoodenWall = "Health of High Wooden Straight Walls",
-	Sandbox_DWF_AmountNecessaryHighWoodenWall = "Zombie amount necessary to thump High Wooden Straight Walls",
-
     Sandbox_DWF_HealthHighMetallicMilitaryFence = "Health of Portable Fencing",
-	Sandbox_DWF_AmountNecessaryHighMetallicMilitaryFence = "Zombie amount necessary to thump Portable Fencing",
-
     Sandbox_DWF_HealthHighMetallicMilitaryBarbedFence = "Health of Portable Barbed Fencing",
+
+
+	Sandbox_DWF_EnableModifiedZombieThumpBehaviour = "Enable Modified Zombie Thumping Behaviour",
+	Sandbox_DWF_AmountNecessaryWoodenFancyWall = "Zombie amount to thump Wooden Fancy Walls",
+	Sandbox_DWF_AmountNecessaryHighMetallicBarbedFence = "Zombie amount necessary to thump Military Fencing",
+	Sandbox_DWF_AmountNecessaryHighMetallicFence = "Zombie amount necessary to thump High Chainlink Fences",
+	Sandbox_DWF_AmountNecessaryHighMetallicFancyFence = "Zombie amount necessary to thump Black Metal Fancy Fences",
+	Sandbox_DWF_AmountNecessaryHighWoodenWall = "Zombie amount necessary to thump High Wooden Straight Walls",
+	Sandbox_DWF_AmountNecessaryHighMetallicMilitaryFence = "Zombie amount necessary to thump Portable Fencing",
 	Sandbox_DWF_AmountNecessaryHighMetallicMilitaryBarbedFence = "Zombie amount necessary to thump Portable Barbed Fencing",
 
 }

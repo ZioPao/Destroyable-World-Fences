@@ -3,7 +3,7 @@ if isClient() then return end
 require "Map/SGlobalObjectSystem"
 
 DWF_WallSystem = SGlobalObjectSystem:derive("DMF_WallSystem")
-DWF_WallSystem.removedCache = nil;
+DWF_WallSystem.removedCache = nil
 
 function DWF_WallSystem:new()
 	local o = SGlobalObjectSystem.new(self, "wall")
@@ -22,10 +22,6 @@ function DWF_WallSystem:isValidIsoObject(isoObject)
 	return instanceof(isoObject, "IsoThumpable") and isoObject:getName() == "Trap"
 end
 
-function DWF_WallSystem:OnClientCommand(command, playerObj, args)
-	--print("DWF: TO BE IMPLEMENTED")
-	--STrapSystemCommands[command](playerObj, args)
-end
 
 
 function DWF_WallSystem:OnObjectAboutToBeRemoved(isoObject)
@@ -35,12 +31,12 @@ function DWF_WallSystem:OnObjectAboutToBeRemoved(isoObject)
 	-- so it should not be accessed after this.
 
 
-	DWF_WallSystem.removedCache = nil;
+	DWF_WallSystem.removedCache = nil
 	if self:isValidIsoObject(isoObject) then
 		local luaObject = self:getLuaObjectOnSquare(isoObject:getSquare())
 		if luaObject then
-			DWF_WallSystem.removedCache = copyTable(luaObject);
-			--luaObject:spawnDestroyItems(isoObject:getSquare());
+			DWF_WallSystem.removedCache = copyTable(luaObject)
+			--luaObject:spawnDestroyItems(isoObject:getSquare())
 		end
 	end
 	SGlobalObjectSystem.OnObjectAboutToBeRemoved(self, isoObject)
@@ -51,7 +47,7 @@ function DWF_WallSystem:OnDestroyIsoThumpable(isoObject, playerObj)
 
 		-- TODO should it spawn something?
 		--STrapGlobalObject.SpawnDestroyItems(DWF_WallSystem.removedCache.trapType, isoObject:getSquare(), isoObject)
-		DWF_WallSystem.removedCache = nil;
+		DWF_WallSystem.removedCache = nil
 	end
 	SGlobalObjectSystem.OnDestroyIsoThumpable(self, isoObject, playerObj)
 end

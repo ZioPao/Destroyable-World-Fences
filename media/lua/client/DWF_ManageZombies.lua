@@ -1,4 +1,4 @@
---* Bunch of 'hacks' to lessen the impact of this abomination *--
+--* Bunch of 'hacks' to lessen the impact of this thing *--
 
 -- Adds a delay between each OnZombieUpdate. Probably the most aggressive setting on the threes.
 -- The delay variable is the time in ms
@@ -91,4 +91,7 @@ local function ManageZombieThump(zombie)
     end
 end
 
-Events.OnZombieUpdate.Add(ManageZombieThump)
+
+if SandboxVars.DWF.EnableModifiedZombieThumpBehaviour then
+    Events.OnZombieUpdate.Add(ManageZombieThump)
+end

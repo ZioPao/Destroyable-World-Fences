@@ -8,6 +8,14 @@ option DWF.EnableDebugMessages
 	translation = DWF_EnableDebugMessages,
 }
 
+option DWF.EnableModifiedZombieThumpBehaviour
+{
+	type = boolean,
+	default = true,
+	page = DWF,
+	translation = DWF_EnableModifiedZombieThumpBehaviour,
+}
+
 option DWF.HealthWoodenFancyWall
 {
 	type = integer,

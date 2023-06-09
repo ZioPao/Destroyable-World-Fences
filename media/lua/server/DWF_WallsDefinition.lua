@@ -1,5 +1,6 @@
-local table_sprites = {
+--* This was an old file, now we just use it as a reference *--
 
+--[[
     -- Wood thing high fancy
     "fencing_01_08",        -- NorthWall
     "fencing_01_09",        -- NorthWall
@@ -39,8 +40,6 @@ local table_sprites = {
     "fencing_01_74",        -- SouthEastCorner
     "fencing_01_75",        -- NorthWestCorner
 
-
-
     -- Military fence
     "fencing_01_80",        -- NorthWallTrans
     "fencing_01_81",        -- NorthWallTrans
@@ -54,5 +53,4 @@ local table_sprites = {
     "fencing_01_90",        -- WestWallTrans
     "fencing_01_91",        -- WestWallTrans
     "fencing_01_92",        -- NorthWestCornerTrans
-
-}
+--]]
