@@ -240,14 +240,12 @@ local function SetSpecificAttributes(spriteName, javaObject)
 end
 
 
----@param sprite_name string
+---@param spriteName string
 ---@param north boolean
-local function CreateWall(sq, sprite_name, north)
+local function CreateWall(sq, spriteName, north)
 	local modData = {}
-	
 	local cell = getWorld():getCell()
-	--local north = false
-	local javaObject = IsoThumpable.new(cell, sq, sprite_name, north, modData)
+	local javaObject = IsoThumpable.new(cell, sq, spriteName, north, modData)
 
 	javaObject:setCanPassThrough(false)
 	javaObject:setCanBarricade(false)
@@ -265,23 +263,20 @@ local function CreateWall(sq, sprite_name, north)
 	javaObject:setIsThumpable(true)
 	javaObject:setModData(copyTable(modData))
 
-
-	-- TODO This is the thing that we need to mess with
-	SetSpecificAttributes(sprite_name, javaObject)
+	SetSpecificAttributes(spriteName, javaObject)
 	javaObject:setSpecialTooltip(false)
 
     triggerEvent("OnObjectAdded", javaObject)
-
 
 	return javaObject
 end
 
 
 local function NewWall(isoObject)
-	local sprite_name = isoObject:getSprite():getName()
-    local wall_def, north = GetWallDefFromSprite(sprite_name)
+	local spriteName = isoObject:getSprite():getName()
+    local wallDef, north = GetWallDefFromSprite(spriteName)
 
-	if not wall_def then return end
+	if not wallDef then return end
 	if north == nil then return end
 
 	local sq = isoObject:getSquare()
@@ -298,12 +293,11 @@ local function NewWall(isoObject)
 	return javaObject
 end
 
-local PRIORITY = 5
 
 local function LoadWall(isoObject)
 	local spriteName = isoObject:getSprite():getName()
-	local wall_def = GetWallDefFromSprite(spriteName)
-	if not wall_def then return end
+	local wallDef = GetWallDefFromSprite(spriteName)
+	if not wallDef then return end
 	if not instanceof(isoObject, "IsoThumpable") then
 		isoObject = NewWall(isoObject)
 	end
@@ -315,6 +309,6 @@ end
 for _, wall_def in pairs(DWF_Walls) do
 	local sprites = GetWallSprites(wall_def)
 
-	MapObjects.OnNewWithSprite(sprites, NewWall, PRIORITY)
-	MapObjects.OnLoadWithSprite(sprites, LoadWall, PRIORITY)
+	MapObjects.OnNewWithSprite(sprites, NewWall, 5)		-- last param is priority
+	MapObjects.OnLoadWithSprite(sprites, LoadWall, 5)
 end

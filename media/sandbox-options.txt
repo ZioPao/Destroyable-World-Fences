@@ -8,14 +8,6 @@ option DWF.EnableDebugMessages
 	translation = DWF_EnableDebugMessages,
 }
 
-option DWF.EnableModifiedZombieThumpBehaviour
-{
-	type = boolean,
-	default = true,
-	page = DWF,
-	translation = DWF_EnableModifiedZombieThumpBehaviour,
-}
-
 option DWF.HealthWoodenFancyWall
 {
 	type = integer,
@@ -25,17 +17,6 @@ option DWF.HealthWoodenFancyWall
 	page = DWF,
 	translation = DWF_HealthHighWoodenFancyWall,
 }
-
-option DWF.AmountNecessaryWoodenFancyWall
-{
-	type = integer,
-	min = 1,
-	max = 50,
-	default = 5,
-	page = DWF,
-	translation = DWF_AmountNecessaryWoodenFancyWall,
-}
-
 option DWF.HealthHighMetallicBarbedFence
 {
 	type = integer,
@@ -46,18 +27,6 @@ option DWF.HealthHighMetallicBarbedFence
 	page = DWF,
 	translation = DWF_HealthHighMetallicBarbedFence,
 }
-
-option DWF.AmountNecessaryHighMetallicBarbedFence
-{
-	type = integer,
-	min = 1,
-	max = 50,
-	default = 15,
-
-	page = DWF,
-	translation = DWF_AmountNecessaryHighMetallicBarbedFence,
-}
-
 option DWF.HealthHighMetallicFence
 {
 	type = integer,
@@ -68,18 +37,6 @@ option DWF.HealthHighMetallicFence
 	page = DWF,
 	translation = DWF_HealthHighMetallicFence,
 }
-
-option DWF.AmountNecessaryHighMetallicFence
-{
-	type = integer,
-	min = 1,
-	max = 50,
-	default = 15,
-
-	page = DWF,
-	translation = DWF_AmountNecessaryHighMetallicFence,
-}
-
 option DWF.HealthHighMetallicFancyFence
 {
 	type = integer,
@@ -90,18 +47,6 @@ option DWF.HealthHighMetallicFancyFence
 	page = DWF,
 	translation = DWF_HealthHighMetallicFancyFence,
 }
-
-option DWF.AmountNecessaryHighMetallicFancyFence
-{
-	type = integer,
-	min = 1,
-	max = 50,
-	default = 15,
-
-	page = DWF,
-	translation = DWF_AmountNecessaryHighMetallicFancyFence,
-}
-
 option DWF.HealthHighWoodenWall
 {
 	type = integer,
@@ -112,18 +57,6 @@ option DWF.HealthHighWoodenWall
 	page = DWF,
 	translation = DWF_HealthHighWoodenWall,
 }
-
-option DWF.AmountNecessaryHighWoodenWall
-{
-	type = integer,
-	min = 1,
-	max = 50,
-	default = 8,
-
-	page = DWF,
-	translation = DWF_AmountNecessaryHighWoodenWall,
-}
-
 option DWF.HealthHighMetallicMilitaryFence
 {
 	type = integer,
@@ -134,18 +67,6 @@ option DWF.HealthHighMetallicMilitaryFence
 	page = DWF,
 	translation = DWF_HealthHighMetallicMilitaryFence,
 }
-
-option DWF.AmountNecessaryHighMetallicMilitaryFence
-{
-	type = integer,
-	min = 1,
-	max = 50,
-	default = 15,
-
-	page = DWF,
-	translation = DWF_AmountNecessaryHighMetallicMilitaryFence,
-}
-
 option DWF.HealthHighMetallicMilitaryBarbedFence
 {
 	type = integer,
@@ -157,6 +78,73 @@ option DWF.HealthHighMetallicMilitaryBarbedFence
 	translation = DWF_HealthHighMetallicMilitaryBarbedFence,
 }
 
+
+option DWF.EnableModifiedZombieThumpBehaviour
+{
+	type = boolean,
+	default = true,
+	page = DWF,
+	translation = DWF_EnableModifiedZombieThumpBehaviour,
+}
+option DWF.AmountNecessaryWoodenFancyWall
+{
+	type = integer,
+	min = 1,
+	max = 50,
+	default = 5,
+	page = DWF,
+	translation = DWF_AmountNecessaryWoodenFancyWall,
+}
+option DWF.AmountNecessaryHighMetallicBarbedFence
+{
+	type = integer,
+	min = 1,
+	max = 50,
+	default = 15,
+
+	page = DWF,
+	translation = DWF_AmountNecessaryHighMetallicBarbedFence,
+}
+option DWF.AmountNecessaryHighMetallicFence
+{
+	type = integer,
+	min = 1,
+	max = 50,
+	default = 15,
+
+	page = DWF,
+	translation = DWF_AmountNecessaryHighMetallicFence,
+}
+option DWF.AmountNecessaryHighMetallicFancyFence
+{
+	type = integer,
+	min = 1,
+	max = 50,
+	default = 15,
+
+	page = DWF,
+	translation = DWF_AmountNecessaryHighMetallicFancyFence,
+}
+option DWF.AmountNecessaryHighWoodenWall
+{
+	type = integer,
+	min = 1,
+	max = 50,
+	default = 8,
+
+	page = DWF,
+	translation = DWF_AmountNecessaryHighWoodenWall,
+}
+option DWF.AmountNecessaryHighMetallicMilitaryFence
+{
+	type = integer,
+	min = 1,
+	max = 50,
+	default = 15,
+
+	page = DWF,
+	translation = DWF_AmountNecessaryHighMetallicMilitaryFence,
+}
 option DWF.AmountNecessaryHighMetallicMilitaryBarbedFence
 {
 	type = integer,

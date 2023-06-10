@@ -12,7 +12,7 @@ local lessPreciseObjectsCheckHack = true
 
 -- Basically a more 'randomic' way of having a delay between each OnZombieUpdate. The higher the chanceOfSkip is, 
 -- the less this function will be actually run.
-local skipZombieUpdateHack = true
+local skipZombieUpdateHack = false
 local chanceOfSkip = 80
 
 --------------------------------------------------------------------------
@@ -83,7 +83,7 @@ local function ManageZombieThump(zombie)
 
 
             timer:Simple(ZombRand(1,3), function()
-                zombie:setUseless(false)
+               zombie:setUseless(false)
             end)
 
         end
