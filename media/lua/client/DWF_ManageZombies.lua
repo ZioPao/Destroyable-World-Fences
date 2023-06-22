@@ -91,7 +91,12 @@ local function ManageZombieThump(zombie)
     end
 end
 
+Events.OnGameStart.Add(function()
+    if SandboxVars.DWF.EnableModifiedZombieThumpBehaviour then
+        Events.OnZombieUpdate.Add(ManageZombieThump)
+    end
+end)
 
-if SandboxVars.DWF.EnableModifiedZombieThumpBehaviour then
-    Events.OnZombieUpdate.Add(ManageZombieThump)
-end
+Events.OnMainMenuEnter.Add(function()
+    Events.OnZombieUpdate.Remove(ManageZombieThump)
+end)

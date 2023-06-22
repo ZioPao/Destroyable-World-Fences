@@ -1,0 +1,12 @@
+version=1
+id=2923027740
+title=Destroyable World Fences
+description=[h1]Destroyable World Fences[/h1]
+description=Is the game too easy to cheese? Stop being a casual and make your life harder. You won't be safe anymore inside those fancy walls.
+description=Fences have different stats, but most will resist for a very long time. But just in case, don't stay near them if you hear a thump noise.
+description=[b]Compatible with SP and MP (Host not tested)[/b]
+description=
+description=[h1]IMPORTANT NOTICE[/h1]
+description=You will have to start from a fresh world since this mod modifies stuff during the world generation. You can modify health of the single type of wall\fences from the Sandbox Options.
+tags=Build 41;Balance;Hardmode;Misc;Multiplayer;Realistic
+visibility=public
