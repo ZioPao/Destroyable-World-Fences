@@ -25,12 +25,6 @@ end
 
 
 function DWF_WallSystem:OnObjectAboutToBeRemoved(isoObject)
-	-- This is called *before* self:OnDestroyIsoThumpable() due to
-	-- ISBuildingObject.onDestroy() removing the object.
-	-- SGlobalObjectSystem.OnObjectAboutToBeRemoved() will remove the STrapGlobalObject
-	-- so it should not be accessed after this.
-
-
 	DWF_WallSystem.removedCache = nil
 	if self:isValidIsoObject(isoObject) then
 		local luaObject = self:getLuaObjectOnSquare(isoObject:getSquare())

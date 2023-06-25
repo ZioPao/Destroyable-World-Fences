@@ -1,3 +1,6 @@
+-- In the original version of DWF, zombies would easily pile up against a wall and destroy it after a while.
+-- With this updated version, they should start attacking a wall only if there are enough zombies piling up.
+
 --* Bunch of 'hacks' to lessen the impact of this thing *--
 
 -- Adds a delay between each OnZombieUpdate. Probably the most aggressive setting on the threes.
