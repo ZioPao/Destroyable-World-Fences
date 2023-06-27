@@ -13,10 +13,15 @@ local delay = 1
 -- if each IsoMovingObject is a zombie or not. Shouldn't affect gameplay too much, helps performance a ton
 local lessPreciseObjectsCheckHack = true
 
--- Basically a more 'randomic' way of having a delay between each OnZombieUpdate. The higher the chanceOfSkip is, 
+-- Basically a more 'randomic' way of having a delay between each OnZombieUpdate. The higher the chanceOfSkip is,
 -- the less this function will be actually run.
 local skipZombieUpdateHack = false
 local chanceOfSkip = 80
+
+
+-- TODO Optimize this by caching functions
+local getTimeInMillis = getTimeInMillis
+local ZombRand = ZombRand
 
 --------------------------------------------------------------------------
 
@@ -24,7 +29,7 @@ local function ManageZombieThump(zombie)
     if SandboxVars.DWF.EnableDebugMessages then print("Running ManageZombieThump") end
 
     if skipZombieUpdateHack then
-        if ZombRand(0,100) < chanceOfSkip then return end
+        if ZombRand(0, 100) < chanceOfSkip then return end
     end
 
     if lessPreciseTimerHack then
@@ -33,7 +38,6 @@ local function ManageZombieThump(zombie)
         end
         if timerDelay > getTimeInMillis() then return end
         timerDelay = getTimeInMillis() + delay
-
     end
 
 
@@ -58,19 +62,21 @@ local function ManageZombieThump(zombie)
         for x = tempX - dist, tempX + dist do
             for y = tempY - dist, tempY + dist do
                 local sq = cell:getGridSquare(x, y, z)
-                
-                if lessPreciseObjectsCheckHack then
-                    -- Performance tweak.. Generally, moving objects would be zombies, vehicles, characters, and whatever.. Less precise, but should be a lot faster
-                    thumpingZombiesAmount = thumpingZombiesAmount + sq:getMovingObjects():size()
-                else
-                    for i=1,sq:getMovingObjects():size() do
-                        local obj = sq:getMovingObjects():get(i - 1)
-                        if instanceof(obj, "IsoZombie") then
-                            thumpingZombiesAmount = thumpingZombiesAmount + 1
+                if sq then
+                    local movingObjects = sq:getMovingObjects()
+                    if lessPreciseObjectsCheckHack then
+                        -- Performance tweak.. Generally, moving objects would be zombies, vehicles, characters, and whatever.. Less precise, but should be a lot faster
+                        thumpingZombiesAmount = thumpingZombiesAmount + movingObjects:size()
+                    else
+                        for i = 1, movingObjects:size() do
+                            local obj = movingObjects:get(i - 1)
+                            if instanceof(obj, "IsoZombie") then
+                                thumpingZombiesAmount = thumpingZombiesAmount + 1
+                            end
                         end
                     end
-
                 end
+
             end
         end
 
@@ -85,10 +91,9 @@ local function ManageZombieThump(zombie)
             zombie:setUseless(true)
 
 
-            timer:Simple(ZombRand(1,3), function()
-               zombie:setUseless(false)
+            timer:Simple(ZombRand(1, 3), function()
+                zombie:setUseless(false)
             end)
-
         end
         if SandboxVars.DWF.EnableDebugMessages then print(thumpTarget:getThumpCondition()) end
     end
