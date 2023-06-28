@@ -4,5 +4,5 @@ id=DWF
 description=Make the fences in the world destroyable by zombies
 url=https://github.com/ZioPao/Destroyable-World-Fences
 icon=icon.png
-modversion=1.1
+modversion=1.1.1
 pzversion=41.65
